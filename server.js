@@ -11,6 +11,7 @@ const Twilio = require("twilio");
 require("dotenv").config();
 
 const MAX_ALLOWED_SESSION_DURATION = 14400;
+const MAX_ALLOWED_SESSION_DURATION = 14400;
 const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
 const twilioApiKeySID = process.env.TWILIO_API_KEY_SID;
 const twilioApiKeySecret = process.env.TWILIO_API_KEY_SECRET;
@@ -19,12 +20,8 @@ const twilioApiKeySecret = process.env.TWILIO_API_KEY_SECRET;
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    `${process.env.REACT_APP_CLIENT_URL}`
-  );
-
-  res.setHeader("Access-Control-Allow-Origin", `http://localhost:3000`);
+  console.log(req.originalURL);
+  res.setHeader("Access-Control-Allow-Origin", `*`);
 
   // Request methods you wish to allow
   res.setHeader(
